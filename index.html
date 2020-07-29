@@ -1,0 +1,122 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<!-- jQuery文件, 务必在bootstrap.min.js 之前引入 -->
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<!-- Bootstrap 核心 CSS 文件 -->
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Highlight.js 文件 -->
+	<link href="http://cdn.bootcss.com/highlight.js/10.1.1/styles/default.min.css" rel="stylesheet">  
+	<script src="http://cdn.bootcss.com/highlight.js/10.1.1/highlight.min.js"></script>  
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+		$(function(){
+			initFootNote();
+		});
+		function initFootNote(){
+			var refs=document.getElementsByTagName("ref"); 
+			for(var i = 0; i < refs.length; i++){
+				ref = refs[i]
+				console.log(ref);
+				idx = ref["id"].substring(4);
+				text = document.getElementById("item-"+idx).parentNode.innerText;
+				ref.setAttribute("data", text);
+				console.log(text);
+			}
+		}
+		function myFunc(key){
+			var ele_ref=document.getElementById("ref-"+key); 
+			var ele_item=document.getElementById("item-"+key); 
+			//alert(ele_item.parentNode.innerText);
+			ele_ref.parentNode.setAttribute("data", ele_item.parentNode.innerText);
+		}
+	</script>
+	<!-- MathJax.js 文件 -->
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			showProcessingMessages: false, //关闭js加载过程信息
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']], //行内公式选择符
+				displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+				skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+			}
+		});
+	</script>
+	
+	<style>
+		body{
+			background: #555555;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		#main{
+			padding: 10px 5%;
+			background: #ffffff;
+			line-height: 1.8em;
+		}
+		.hljs{
+			background:#ffffff00;//代码透明背景
+		}
+		ref{
+			position:relative;
+			display:inline-block;
+		}
+		ref:hover{
+			cursor:pointer;
+		}
+		ref:hover:before{
+			content: attr(data);
+			top: 100%;
+			padding: 4px 4px;
+			position:absolute;
+			white-spack:pre;
+			border-bottom-left-radius: 4px;
+			border-bottom-right-radius: 4px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			background: #444444;
+			color: #eeeeee;//#0cc;
+			overflow: hidden;
+			z-index: 9999;
+			text-align:center;
+			width: 200px;
+		}
+		ref:hover:after{
+			width:0;
+			height:0;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+<div class="row clearfix">
+<div id="main" class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<button><a href="sc/index.html">毛泽东诗词全集</a></button><br>
+</div>
+<div id="main" class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<button><a href="mzdxj/index.html">毛泽东选集（1-4卷）</a></button><br>
+</div>
+<div id="main" class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<button><a href="mzdwj/index.html">毛泽东文集（1-8卷）</a></button><br>
+</div>
+<div id="main" class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<button><a href="mzdzqwg/index.html">毛泽东早期文稿</a></button><br>
+</div>
+<div id="main" class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<button><a href="mzdsxws/index.html">毛泽东思想万岁</a></button>
+</div>
+</div>
+
+<div class="row">
+<div id="jump" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8">
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
